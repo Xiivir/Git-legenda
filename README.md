@@ -1,6 +1,7 @@
+## GIT COMMANDS
 pwd = see directory path
 ls = see file in path directory
-# Editing a file
+# INTRODUCTION TO GIT Editing a file
 nano finance.csv
 Use nano to:
 delete,
@@ -8,14 +9,15 @@ add,
 or change contents of a file
 Save changes: Ctrl + O
 Exit the text editor: Ctrl + X
+#  Editing a file
 echo —create or edit a file
-Create a new file todo.txt
+# Create a new file todo.txt
 echo "Review for duplicate records" > todo.txt
-Add content to existing file todo.txt
+# Add content to existing file todo.txt
 echo "Review for duplicate records" >> todo.txt
 # Checking Git version
 git --version
-# Accessing the .git directory
+# INTRODUCTION TO GITAccessing the .git directory
 ls
 data report.md
 ls -a
@@ -59,7 +61,7 @@ Changes per document by line
     git show HEAD~1 Show what changed in the second most recent commit
     git diff 35f4b4d 186398f Show changes between two commit
     git diff HEAD~1 HEAD~2S how changes between two commitsgit annotate fileShow line-by-line changes and associated metadata
- # INTRODUCTION TO GIT The HEAD shortcut
+ # The HEAD shortcut
     git diff -r HEADCompares staged files to the version in the last commit
     Use a tilde ~ to pick a specific commit to compare versionsHEAD~1 = the second most recent commitHEAD~2 = the commit before that
     Must not use spaces before or after the tilde ~
@@ -72,14 +74,14 @@ Changes per document by line
     git checkout -- summary_statistics.csv 
     checkout means switching to a different version 
     This means losing all changes made to the unstaged file forever
- # Undo changes to all unstaged files
+ #Undo changes to all unstaged files
     git checkout .
     
-# Customizing the log output
+#Customizing the log output
    We can restrict the number of commits displayed using -:
     git log -3 To only look at the commit history of one file:
     git log -3 report.md
-# Customizing the log output
+#Customizing the log output
     Restrict git log by date:
     git log --since='Month Day Year'Commits since 2nd April 2022:
     git log --since='Apr 2 2022'Commits between 2nd and 11th April:
@@ -92,25 +94,25 @@ Changes per document by line
  # Restoring a repo to a previous state 
     git checkout dc9d8facAlternatively:git checkout HEAD~1
 # Levels of settings
-    git config --list
+     git config --list
     Git has three levels of settings:
     1. --local: settings for one specific project
     2. --global: settings for all of our projects
     3. --system: settings for every users on this computer
-# Changing our settings
+#Changing our settings
     git config --global setting value
     Change email address to johnsmith@datacamp.com:
     git config --global user.email johnsmith@datacamp.com
     Change username to John Smith:
     git config --global user.name 'John Smith'
     If we don't use '' and our user.name has a space:Git would save user.name as John
-# Using an alias
+#Using an alias
     Set up an alias through global settings
     Typically used to shorten a commandTo create an alias for committing files by executing ci:
     git config --global alias.ci 'commit -m'
     Again, we use '' so Git processes characters after the space
     We can now commit files by executing:git ci
-# Creating a custom alias
+#Creating a custom alias
     We can create an alias for any commandIf we often unstage files:
     git config --global alias.unstage 'reset HEAD'
     Be careful not to overwrite existing commands!
@@ -121,5 +123,43 @@ Changes per document by line
     Output format: 
     alias.aliasname=command
     alias.ci=commit -malias.unstage=reset HEAD
- # Ignoring specific files
+ #Ignoring specific files
     nano .gitignore
+ # How do we switch branches?
+    git checkout -b new_branch to create a new branch
+    git checkout debugging
+    git branch
+ # Merging branches
+    git merge source destination
+    To merge summary-statistics into main
+    git merge summary-statistics main
+ # Creating a new repo
+    git init mental-health-workspace
+    cd mental-health-workspace
+ # Converting a project
+    git init
+    
+ # Cloning locally
+    git clone path-to-project-directory
+    git clone /home/john/repo
+    git clone /home/john/repo new_repo
+ # Cloning a remote
+    Remote repos are stored in an online hosting service e.g., GitHub, Bitbucket, or GitlabIf we have an account:we can clone a         remote repo on to our local computer
+    git clone [URL]
+    git clone https://github.com/datacamp/project
+ # Identifying a remote
+    When cloning a repoGit remembers where the original was 
+    Git stores a remote tag in the new repo's configuration:
+    git remote
+ # Getting more information
+    git remote -v
+ # Creating a remote
+    When cloning, Git will automatically name the remote origin
+    git remote add name URL
+    git remote add george https://github.com/george_datacamp/repo
+ # Fetching from a remote
+    git fetch origin main
+# Fetching from a remote   
+    git fetch origin report
+ # Synchronizing content
+    git merge origin main
